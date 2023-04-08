@@ -1,0 +1,103 @@
+//@import "mixin";
+
+// main-header
+.main-header {
+  align-items: center;
+  background-color: $colorPrimeDark;
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 32px 0 12px;
+  &__logo {
+    display: inline-block;
+    & > img {
+      object-fit: contain;
+    }
+  }
+  &__content {
+    align-items: center;
+    display: flex;
+    & > div {
+      align-items: center;
+      display: flex;
+      &:not(:last-child):after {
+        background-color: #6473B5;
+        content: '';
+        display: inline-block;
+        height: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+        width: 1px;
+      }
+    }
+  }
+
+  &__notifications {
+    & > span {
+      background: no-repeat center url('../img/bell-icon.svg');
+      content: '';
+      cursor: pointer;
+      display: inline-block;
+      height: 24px;
+      position: relative;
+      width: 24px;
+      &:after {
+        background-color: #E63200;
+        border: 1px solid $colorPrimeDark;
+        border-radius: 50%;
+        color: $colorTextWhite;
+        content: attr(data-count);
+        font: 500 12px 'Inter', sans-serif;
+        line-height: 16px;
+        height: 18px;
+        position: absolute;
+        right: -5px;
+        text-align: center;
+        top: -4px;
+        width: 18px;
+      }
+    }
+  }
+  &__service,
+  &__help {
+    & > a {
+      color: $colorTextWhite;
+      font: 400 14px 'Inter', sans-serif;
+    }
+  }
+  &__service {
+    &_badge {
+      background-color: #FBB03B;
+      border-radius: 3px;
+      color: $colorTextWhite;
+      font: 600 12px 'Inter', sans-serif;
+      height: 24px;
+      line-height: 24px;
+      margin-left: 8px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    @media (max-width: $breakpoint-sm) {
+      display: none !important;
+    }
+  }
+  &__help {
+    &:before {
+      background: no-repeat center url('../img/help-icon.svg');
+      content: '';
+      height: 15px;
+      margin-right: 9px;
+      width: 14px;
+    }
+  }
+  &__account {
+    background-color: $colorPrimeLight;
+    border-radius: 50%;
+    color: $colorTextWhite;
+    cursor: pointer;
+    font: 400 12px 'Roboto', sans-serif;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+  }
+}

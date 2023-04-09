@@ -930,6 +930,7 @@ html, body {
     top: $headerHeightPage + $headerHeightMain + 1px;
     -webkit-transform: translateX(-$sidebarWidth);
     transform: translateX(-$sidebarWidth);
+    width: 240px;
     @include transition(transform);
     &.show {
       -webkit-transform: translateX(0);

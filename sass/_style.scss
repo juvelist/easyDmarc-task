@@ -160,12 +160,14 @@ html, body {
       position: absolute;
       right: 12px;
       top: 50%;
+      -webkit-transform: translate(0, -50%);
       transform: translate(0, -50%);
       width: 16px;
       @include transition(transform);
     }
     @media only screen and (min-width: #{$breakpoint-sm + 1}px) {
       &:hover:after {
+        -webkit-transform: translate(-3px, -50%);
         transform: translate(-3px, -50%);
       }
     }
@@ -197,6 +199,7 @@ html, body {
     & > span {
       top: 50%;
       left: 50%;
+      -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       position: absolute;
       width: 18px;
@@ -214,12 +217,15 @@ html, body {
     }
     &.show > span {
       &:before {
+        -webkit-transform: translateY(6px) rotate(135deg);
         transform: translateY(6px) rotate(135deg);
       }
       &:after {
+        -webkit-transform: translateY(-6px) rotate(-135deg);
         transform: translateY(-6px) rotate(-135deg);
       }
       & > span {
+        -webkit-transform: scale(0);
         transform: scale(0);
       }
     }
@@ -263,6 +269,7 @@ html, body {
       position: absolute;
       right: 0;
       top: 50%;
+      -webkit-transform: translate(0, -50%);
       transform: translate(0, -50%);
       width: 8px;
       @include transition(transform);
@@ -275,6 +282,7 @@ html, body {
     }
     @media only screen and (min-width: #{$breakpoint-sm + 1}px) {
       &:hover:after {
+        -webkit-transform: translate(0, -20%);
         transform: translate(0, -20%);
       }
     }
@@ -373,10 +381,11 @@ html, body {
     padding-bottom: 160px;
     position: fixed;
     top: $headerHeightPage + $headerHeightMain + 1px;
-
+    -webkit-transform: translateX(-$sidebarWidth);
     transform: translateX(-$sidebarWidth);
     @include transition(transform);
     &.show {
+      -webkit-transform: translateX(0);
       transform: translateX(0);
     }
   }
@@ -439,9 +448,11 @@ html, body {
       &:hover:not(.active) {
         & > a {
           & > span {
+            -webkit-transform: translateX(3px);
             transform: translateX(3px);
           }
           &.collapsed > span {
+            -webkit-transform: translateX(0);
             transform: translateX(0);
           }
         }
@@ -470,6 +481,7 @@ html, body {
         }
         &.collapsed {
           &:after {
+            -webkit-transform: rotate(180deg);
             transform: rotate(180deg);
           }
         }
@@ -495,6 +507,7 @@ html, body {
         position: absolute;
         right: 0;
         top: 50%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         width: 2px;
         @include transition(background-color, .2s);
@@ -521,6 +534,7 @@ html, body {
       padding-left: 26px;
       margin-bottom: 3px;
       &:hover > a {
+        -webkit-transform: translateX(2px);
         transform: translateX(2px);
       }
       & > a {

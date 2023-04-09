@@ -235,6 +235,7 @@ html, body, .page-header__usage {
       position: absolute;
       right: 12px;
       top: 50%;
+      -webkit-transform: translate(0, -50%);
       transform: translate(0, -50%);
       width: 16px;
       transition-property: transform;
@@ -242,6 +243,7 @@ html, body, .page-header__usage {
       transition-timing-function: ease; }
     @media only screen and (min-width: 768px) {
       .page-header__platform:hover:after {
+        -webkit-transform: translate(-3px, -50%);
         transform: translate(-3px, -50%); } }
     .page-header__platform > p {
       color: #1B2C74; }
@@ -267,6 +269,7 @@ html, body, .page-header__usage {
     .page-header__sidebar-btn > span {
       top: 50%;
       left: 50%;
+      -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       position: absolute;
       width: 18px; }
@@ -282,10 +285,13 @@ html, body, .page-header__usage {
         transition-duration: 0.3s;
         transition-timing-function: ease; }
     .page-header__sidebar-btn.show > span:before {
+      -webkit-transform: translateY(6px) rotate(135deg);
       transform: translateY(6px) rotate(135deg); }
     .page-header__sidebar-btn.show > span:after {
+      -webkit-transform: translateY(-6px) rotate(-135deg);
       transform: translateY(-6px) rotate(-135deg); }
     .page-header__sidebar-btn.show > span > span {
+      -webkit-transform: scale(0);
       transform: scale(0); }
   .page-header__btn_plus {
     color: #1B2C74;
@@ -321,6 +327,7 @@ html, body, .page-header__usage {
       position: absolute;
       right: 0;
       top: 50%;
+      -webkit-transform: translate(0, -50%);
       transform: translate(0, -50%);
       width: 8px;
       transition-property: transform;
@@ -333,6 +340,7 @@ html, body, .page-header__usage {
           display: none; } }
     @media only screen and (min-width: 768px) {
       .page-header__usage:hover:after {
+        -webkit-transform: translate(0, -20%);
         transform: translate(0, -20%); } }
 
 .usage {
@@ -407,11 +415,13 @@ html, body, .page-header__usage {
       padding-bottom: 160px;
       position: fixed;
       top: 113px;
+      -webkit-transform: translateX(-240px);
       transform: translateX(-240px);
       transition-property: transform;
       transition-duration: 0.3s;
       transition-timing-function: ease; }
       .sidebar.show {
+        -webkit-transform: translateX(0);
         transform: translateX(0); } }
   .sidebar__list_subtitle {
     color: #999999;
@@ -461,8 +471,10 @@ html, body, .page-header__usage {
       .sidebar__list_item.active > a > svg > path, .sidebar__list_item:hover > a > svg > path {
         fill: #2C79E7; }
     .sidebar__list_item:hover:not(.active) > a > span {
+      -webkit-transform: translateX(3px);
       transform: translateX(3px); }
     .sidebar__list_item:hover:not(.active) > a.collapsed > span {
+      -webkit-transform: translateX(0);
       transform: translateX(0); }
     .sidebar__list_item.active > a > span {
       font-weight: 600; }
@@ -484,6 +496,7 @@ html, body, .page-header__usage {
         .sidebar__list_item > a.collapse:after {
           display: none; } }
     .sidebar__list_item > a.collapse.collapsed:after {
+      -webkit-transform: rotate(180deg);
       transform: rotate(180deg); }
   .sidebar__list_link {
     align-items: center;
@@ -506,6 +519,7 @@ html, body, .page-header__usage {
       position: absolute;
       right: 0;
       top: 50%;
+      -webkit-transform: translateY(-50%);
       transform: translateY(-50%);
       width: 2px;
       transition-property: background-color;
@@ -535,6 +549,7 @@ html, body, .page-header__usage {
       padding-left: 26px;
       margin-bottom: 3px; }
       .sidebar__collapse ul > li:hover > a {
+        -webkit-transform: translateX(2px);
         transform: translateX(2px); }
       .sidebar__collapse ul > li > a {
         color: #999999;

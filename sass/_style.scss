@@ -49,7 +49,7 @@ html, body {
       position: relative;
       width: 24px;
       &:after {
-        background-color: #E63200;
+        background-color: $colorRed;
         border: 1px solid $colorPrimeDark;
         border-radius: 50%;
         color: $colorTextWhite;
@@ -362,6 +362,18 @@ html, body {
       width: 24px;
     }
   }
+  &__content {
+    background-color: $backgroundMain;
+    border-radius: 20px;
+    display: flex;
+    margin-bottom: 30px;
+    min-height: 600px;
+    overflow: hidden;
+    @media only screen and (max-width: #{$breakpoint-md}px) {
+      background-color: transparent;
+      flex-direction: column;
+    }
+  }
 }
 
 // select
@@ -373,23 +385,28 @@ html, body {
   @extend %pageSectionDistance;
   &__btn-wrap {
     display: inline-block;
+    max-width: 100%;
     position: relative;
   }
   &__btn {
     background-color: $backgroundMain;
     border: 1px solid $borderColorSelect;
     border-radius: 6px;
-    color: #484964;
+    color: $colorDark;
     height: 40px;
     line-height: 40px;
     min-width: 240px;
+    max-width: 100%;
+    overflow: hidden;
     padding-left: 12px;
     padding-right: 30px;
     position: relative;
     text-align: initial;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     @extend %fontMain-sm;
     &:after {
-      background: no-repeat center/contain url('../img/arrow-down-large.svg');
+      background: no-repeat center/contain url('../img/arrow-down-large.svg'), $backgroundMain;
       bottom: 0;
       content: '';
       display: inline-block;
@@ -429,7 +446,7 @@ html, body {
     &_input {
       border: 1px solid $borderColorSelect;
       border-radius: 6px;
-      color: #484964;
+      color: $colorDark;
       display: inline-block;
       height: 40px;
       margin-bottom: 8px;
@@ -439,10 +456,190 @@ html, body {
     }
     &_text {
       color: $colorPrimeLight;
+      word-break: break-word;
       @extend %fontMain-md;
     }
   }
 }
+
+// expired
+.expired {
+  background-color: #F7F9FC;
+  flex: 0 0 43%;
+  padding: 40px 40px 56px;
+  text-align: center;
+  @media only screen and (max-width: #{$breakpoint-sm}px) {
+    padding: 40px;
+  }
+  &__title {
+    color: $colorTextDark;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 16px;
+    @media only screen and (max-width: #{$breakpoint-sm}px) {
+      font-size: 22px;
+    }
+  }
+  &__desc {
+    color: $colorTextDark;
+    margin-bottom: 24px;
+    @extend %fontMain-sm;
+  }
+  @media only screen and (max-width: #{$breakpoint-md}px) {
+    border-radius: 20px;
+  }
+  @media only screen and (max-width: #{$breakpoint-sm}px) {
+    padding: 24px 24px 40px;
+  }
+
+  &__spf {
+    margin-bottom: 32px;
+    &_title {
+      margin-bottom: 12px;
+      @extend %fontMain-sm;
+    }
+    &_img {
+      display: block;
+      margin-bottom: 24px;
+      object-fit: contain;
+      width: 100%;
+    }
+    &_link {
+      color: $colorPrimeLight;
+      @extend %fontMain-sm;
+    }
+  }
+
+  &__lookups {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 40px;
+    @media only screen and (max-width: #{$breakpoint-lg}px) {
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 24px;
+    }
+    &_card {
+      background-color: $backgroundMain;
+      box-shadow: 0 10px 20px rgba(136, 166, 211, .1);
+      border-radius: 20px;
+      flex: 1 0;
+      max-width: 280px;
+      min-height: 100px;
+      padding: 24px;
+      text-align: initial;
+      @media only screen and (max-width: #{$breakpoint-lg}px) {
+        max-width: 100%;
+        width: 280px;
+      }
+    }
+    &_desc {
+      margin-bottom: 8px;
+      @extend %fontMain-md;
+    }
+    &_value {
+      font-family: 'Roboto', sans-serif;
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1.35;
+      @media only screen and (max-width: #{$breakpoint-sm}px) {
+        font-size: 22px;
+      }
+      &.without {
+        color: $colorRed;
+      }
+      &.with {
+        color: $colorGreen;
+      }
+    }
+  }
+  &__benefits {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 320px;
+    &_badge {
+      background: linear-gradient(125deg, rgba(255, 255, 255, 1) -13%, rgba(255, 255, 255, .8) 110%);
+      box-shadow: 0 10px 20px rgba(136, 166, 211, .1);
+      border-radius: 20px;
+      color: $colorTextDark;
+      display: inline-block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 34px;
+      height: 34px;
+      margin-bottom: 8px;
+      padding-left: 12px;
+      padding-right: 12px;
+      @media only screen and (max-width: #{$breakpoint-sm}px) {
+        font-size: 11px;
+      }
+      &:before {
+        background: no-repeat center/contain url('../img/crown-icon.svg');
+        content: '';
+        display: inline-block;
+        height: 16px;
+        margin-right: 9px;
+        vertical-align: middle;
+        width: 16px;
+      }
+    }
+    &_title {
+      color: $colorDark;
+      display: inline-block;
+      font-family: 'Roboto', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      @media only screen and (max-width: #{$breakpoint-sm}px) {
+        font-size: 19px;
+      }
+    }
+    &_list {
+      text-align: initial;
+    }
+    &_item {
+      color: $colorTextDark;
+      margin-bottom: 5px;
+      @extend %fontMain-sm;
+      &:before {
+        background: no-repeat center/contain url('../img/check-circle-icon.svg');
+        content: '';
+        display: inline-block;
+        height: 16px;
+        margin-right: 9px;
+        vertical-align: middle;
+        width: 17px;
+      }
+      &.appear {
+        animation: fade-in-up .8s forwards .5;
+      }
+    }
+  }
+}
+
+// upgrade
+.upgrade {
+  flex: 0 0 57%;
+  padding: 48px 40px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 // sidebar
 .sidebar {
@@ -504,7 +701,7 @@ html, body {
       position: relative;
       @include transition(background-color);
       &.alert:after {
-        background-color: #E63200;
+        background-color: $colorRed;
         border: 2px solid $colorTextWhite;
         border-radius: 50%;
         color: $colorTextWhite;

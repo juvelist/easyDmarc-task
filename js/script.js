@@ -1,3 +1,4 @@
+// open search list
 const toggleSelectInput = () => {
   const selectBtn = document.getElementById('selectBtn')
   if(selectBtn) {
@@ -7,6 +8,7 @@ const toggleSelectInput = () => {
   }
 }
 
+// sidebar toggle on mobile view
 const toggleSidebarOnMobile = () => {
   const sidebarBtn = document.getElementById('sidebarBtn')
   const sidebar = document.getElementById('sidebar')
@@ -18,6 +20,7 @@ const toggleSidebarOnMobile = () => {
   }
 }
 
+// progress load animation
 const loadProgress = () => {
   let count = document.getElementById('count')
   let counter = 0
@@ -33,6 +36,7 @@ const loadProgress = () => {
   }
 }
 
+// collapse sidebar item list
 const collapseListItems = () => {
   const collapseItems = document.querySelectorAll('.sidebar__list_link.collapse')
   if(collapseItems) {
@@ -52,14 +56,26 @@ const collapseListItems = () => {
   }
 }
 
+// appear animation
+animationStart = () => {
+  var features = document.querySelectorAll('.appear-item')
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry){
+      if(entry.intersectionRatio > 0) {
+        entry.target.classList.add('appear')
+      }
+    })
+  })
+  features.forEach(function(feature) {
+    observer.observe(feature)
+  })
+}
+
 window.addEventListener("DOMContentLoaded", (event) => {
   loadProgress()
   collapseListItems()
   toggleSidebarOnMobile()
   toggleSelectInput()
+  window.requestAnimationFrame(animationStart)
 });
-
-
-
-
 

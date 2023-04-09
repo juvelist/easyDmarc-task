@@ -218,7 +218,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
       width: 18px; }
   .main-header__service > a, .main-header__help > a {
     color: #FFFFFF;
-    font: 400 14px 'Inter', sans-serif; }
+    font: 400 13px 'Inter', sans-serif; }
   .main-header__service_badge {
     background-color: #FBB03B;
     border-radius: 3px;
@@ -410,6 +410,9 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
     display: flex;
     padding-right: 24px;
     position: relative; }
+    @media only screen and (max-width: 767px) {
+      .page-header__usage {
+        padding-right: 12px; } }
     .page-header__usage:after {
       background: no-repeat center/contain url("../img/chevron-down-icon.svg");
       content: '';
@@ -425,6 +428,8 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
       transition-duration: 0.3s;
       transition-timing-function: ease; }
     .page-header__usage > span {
+      color: #1B2C74;
+      font: 400 16px 'Inter', sans-serif;
       margin-left: 8px; }
       @media only screen and (max-width: 767px) {
         .page-header__usage > span {
@@ -499,6 +504,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
       display: inline-block;
       height: 24px;
       margin-right: 12px;
+      margin-left: 8px;
       vertical-align: middle;
       width: 24px; }
   .page__content {
@@ -515,7 +521,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
 .select {
   background-color: #FFFFFF;
   border-radius: 10px;
-  padding: 16px;
+  padding: 16px 24px;
   width: 100%; }
   .select__btn-wrap {
     display: inline-block;
@@ -589,7 +595,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
 
 .expired {
   background-color: #F7F9FC;
-  flex: 0 0 43%;
+  flex: 0 0 44%;
   padding: 40px 40px 56px;
   text-align: center; }
   @media only screen and (max-width: 767px) {
@@ -622,7 +628,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
     .expired__spf_title {
       margin-bottom: 12px; }
     .expired__spf_img {
-      margin-bottom: 24px;
+      margin-bottom: 18px;
       object-fit: contain; }
     .expired__spf_link {
       align-self: center;
@@ -659,7 +665,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
   .expired__benefits {
     margin-left: auto;
     margin-right: auto;
-    max-width: 320px; }
+    max-width: 312px; }
     .expired__benefits_badge {
       background: linear-gradient(125deg, white -13%, rgba(255, 255, 255, 0.8) 110%);
       box-shadow: 0 10px 20px rgba(136, 166, 211, 0.1);
@@ -717,7 +723,7 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc,
         animation: fade-in-up .8s ease forwards .3s; }
 
 .upgrade {
-  flex: 0 0 57%;
+  flex: 0 0 56%;
   padding: 48px 40px;
   text-align: center; }
   .upgrade__title {

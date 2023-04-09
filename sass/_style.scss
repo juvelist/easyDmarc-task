@@ -38,7 +38,6 @@ html, body {
       }
     }
   }
-
   &__notifications {
     & > span {
       background: no-repeat center/contain url('../img/bell-icon.svg');
@@ -69,7 +68,7 @@ html, body {
   &__help {
     & > a {
       color: $colorTextWhite;
-      font: 400 14px 'Inter', sans-serif;
+      font: 400 13px 'Inter', sans-serif;
     }
   }
   &__service {
@@ -263,6 +262,9 @@ html, body {
     padding-right: 24px;
     position: relative;
     @extend %fontStyle-md;
+    @media only screen and (max-width: #{$breakpoint-sm}px) {
+      padding-right: 12px;
+    }
     &:after {
       background: no-repeat center/contain url('../img/chevron-down-icon.svg');
       content: '';
@@ -277,6 +279,8 @@ html, body {
       @include transition(transform);
     }
     & > span {
+      color: $colorPrimeDark;
+      font: 400 16px 'Inter', sans-serif;
       margin-left: 8px;
       @media only screen and (max-width: #{$breakpoint-sm}px) {
         display: none;
@@ -368,6 +372,7 @@ html, body {
       display: inline-block;
       height: 24px;
       margin-right: 12px;
+      margin-left: 8px;
       vertical-align: middle;
       width: 24px;
     }
@@ -389,7 +394,7 @@ html, body {
 .select {
   background-color: $backgroundMain;
   border-radius: 10px;
-  padding: 16px;
+  padding: 16px 24px;
   width: 100%;
   @extend %pageSectionDistance;
   &__btn-wrap {
@@ -474,7 +479,7 @@ html, body {
 // expired
 .expired {
   background-color: #F7F9FC;
-  flex: 0 0 43%;
+  flex: 0 0 44%;
   padding: 40px 40px 56px;
   text-align: center;
   @media only screen and (max-width: #{$breakpoint-sm}px) {
@@ -512,7 +517,7 @@ html, body {
       @extend %fontStyle-sm;
     }
     &_img {
-      margin-bottom: 24px;
+      margin-bottom: 18px;
       object-fit: contain;
     }
     &_link {
@@ -562,7 +567,7 @@ html, body {
   &__benefits {
     margin-left: auto;
     margin-right: auto;
-    max-width: 320px;
+    max-width: 312px;
     &_badge {
       background: linear-gradient(125deg, rgba(255, 255, 255, 1) -13%, rgba(255, 255, 255, .8) 110%);
       box-shadow: 0 10px 20px rgba(136, 166, 211, .1);
@@ -631,7 +636,7 @@ html, body {
 
 // upgrade
 .upgrade {
-  flex: 0 0 57%;
+  flex: 0 0 56%;
   padding: 48px 40px;
   text-align: center;
   &__title {

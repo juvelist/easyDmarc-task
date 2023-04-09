@@ -112,14 +112,6 @@ html, body {
   }
 }
 
-
-// main
-//main {
-//  min-height: calc(100vh - #{$headerHeightMain});
-//  display: flex;
-//  flex-direction: column;
-//}
-
 // page-header
 .page-header {
   background-color: $backgroundMain;
@@ -359,7 +351,7 @@ html, body {
     font-size: 20px;
     font-weight: 600;
     line-height: 1.5;
-    margin-bottom: 24px;
+    @extend %pageSectionDistance;
     &:before {
       background: no-repeat center/contain url('../img/email-senders-icon.svg');
       content: '';
@@ -369,21 +361,88 @@ html, body {
       vertical-align: middle;
       width: 24px;
     }
-    @media only screen and (max-width: #{$breakpoint-md}px) {
-      margin-bottom: 16px;
-    }
-    @media only screen and (max-width: #{$breakpoint-sm}px) {
-      margin-bottom: 12px;
-    }
   }
 }
 
-
-
-
-
-
-
+// select
+.select {
+  background-color: $backgroundMain;
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  @extend %pageSectionDistance;
+  &__btn-wrap {
+    display: inline-block;
+    position: relative;
+  }
+  &__btn {
+    background-color: $backgroundMain;
+    border: 1px solid $borderColorSelect;
+    border-radius: 6px;
+    color: #484964;
+    height: 40px;
+    line-height: 40px;
+    min-width: 240px;
+    padding-left: 12px;
+    padding-right: 30px;
+    position: relative;
+    text-align: initial;
+    @extend %fontMain-sm;
+    &:after {
+      background: no-repeat center/contain url('../img/arrow-down-large.svg');
+      bottom: 0;
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin: auto 0;
+      position: absolute;
+      right: 8px;
+      top: 0;
+      width: 24px;
+      @include transition(transform);
+    }
+    &.collapsed {
+      &:after {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+      & + div {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  &__collapse {
+    background-color: $backgroundMain;
+    border: 1px solid $borderColorSelect;
+    border-radius: 6px;
+    min-height: 70px;
+    opacity: 0;
+    padding: 10px 8px;
+    position: absolute;
+    top: 102%;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    width: 100%;
+    @include transition(all);
+    &_input {
+      border: 1px solid $borderColorSelect;
+      border-radius: 6px;
+      color: #484964;
+      display: inline-block;
+      height: 40px;
+      margin-bottom: 8px;
+      padding-left: 12px;
+      padding-right: 12px;
+      width: 100%;
+    }
+    &_text {
+      color: $colorPrimeLight;
+      @extend %fontMain-md;
+    }
+  }
+}
 
 // sidebar
 .sidebar {

@@ -25,3 +25,13 @@
     display: none;
   }
 }
+
+%pageSectionDistance {
+  margin-bottom: 24px;
+  @media only screen and (max-width: #{$breakpoint-md}px) {
+    margin-bottom: 16px;
+  }
+  @media only screen and (max-width: #{$breakpoint-sm}px) {
+    margin-bottom: 12px;
+  }
+}

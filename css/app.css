@@ -86,22 +86,22 @@ button {
   background: transparent;
   cursor: pointer; }
 
-.page-header__platform > p, .page-header__btn_plus, .page-header__btn_upgrade, .sidebar__list_link {
+.page-header__platform > p, .page-header__btn_plus, .page-header__btn_upgrade, .select__btn, .sidebar__list_link {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.5; }
   @media only screen and (max-width: 767) {
-    .page-header__platform > p, .page-header__btn_plus, .page-header__btn_upgrade, .sidebar__list_link {
+    .page-header__platform > p, .page-header__btn_plus, .page-header__btn_upgrade, .select__btn, .sidebar__list_link {
       font-size: 12px; } }
 
-html, body, .page-header__usage {
+html, body, .page-header__usage, .select__collapse_text {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5; }
   @media only screen and (max-width: 767) {
-    html, body, .page-header__usage {
+    html, body, .page-header__usage, .select__collapse_text {
       font-size: 13px; } }
 
 .page, .sidebar {
@@ -109,6 +109,15 @@ html, body, .page-header__usage {
   scrollbar-width: none; }
   .page::-webkit-scrollbar, .sidebar::-webkit-scrollbar {
     display: none; }
+
+.page__title, .select {
+  margin-bottom: 24px; }
+  @media only screen and (max-width: 1023px) {
+    .page__title, .select {
+      margin-bottom: 16px; } }
+  @media only screen and (max-width: 767px) {
+    .page__title, .select {
+      margin-bottom: 12px; } }
 
 .main-header {
   align-items: center;
@@ -401,8 +410,7 @@ html, body, .page-header__usage {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 24px; }
+    line-height: 1.5; }
     .page__title:before {
       background: no-repeat center/contain url("../img/email-senders-icon.svg");
       content: '';
@@ -411,12 +419,75 @@ html, body, .page-header__usage {
       margin-right: 12px;
       vertical-align: middle;
       width: 24px; }
-    @media only screen and (max-width: 1023px) {
-      .page__title {
-        margin-bottom: 16px; } }
-    @media only screen and (max-width: 767px) {
-      .page__title {
-        margin-bottom: 12px; } }
+
+.select {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%; }
+  .select__btn-wrap {
+    display: inline-block;
+    position: relative; }
+  .select__btn {
+    background-color: #FFFFFF;
+    border: 1px solid #E1E6EC;
+    border-radius: 6px;
+    color: #484964;
+    height: 40px;
+    line-height: 40px;
+    min-width: 240px;
+    padding-left: 12px;
+    padding-right: 30px;
+    position: relative;
+    text-align: initial; }
+    .select__btn:after {
+      background: no-repeat center/contain url("../img/arrow-down-large.svg");
+      bottom: 0;
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin: auto 0;
+      position: absolute;
+      right: 8px;
+      top: 0;
+      width: 24px;
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease; }
+    .select__btn.collapsed:after {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg); }
+    .select__btn.collapsed + div {
+      opacity: 1;
+      visibility: visible; }
+  .select__collapse {
+    background-color: #FFFFFF;
+    border: 1px solid #E1E6EC;
+    border-radius: 6px;
+    min-height: 70px;
+    opacity: 0;
+    padding: 10px 8px;
+    position: absolute;
+    top: 102%;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    width: 100%;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease; }
+    .select__collapse_input {
+      border: 1px solid #E1E6EC;
+      border-radius: 6px;
+      color: #484964;
+      display: inline-block;
+      height: 40px;
+      margin-bottom: 8px;
+      padding-left: 12px;
+      padding-right: 12px;
+      width: 100%; }
+    .select__collapse_text {
+      color: #00A9E0; }
 
 .sidebar {
   background-color: #FFFFFF;

@@ -1,23 +1,36 @@
+const toggleSelectInput = () => {
+  const selectBtn = document.getElementById('selectBtn')
+  if(selectBtn) {
+    selectBtn.addEventListener('click', (e) => {
+      e.target.classList.toggle('collapsed')
+    })
+  }
+}
+
 const toggleSidebarOnMobile = () => {
   const sidebarBtn = document.getElementById('sidebarBtn')
   const sidebar = document.getElementById('sidebar')
-  sidebarBtn.addEventListener('click', (e) => {
-    sidebarBtn.classList.toggle('show')
-    sidebar.classList.toggle('show')
-  })
+  if(sidebarBtn && sidebar) {
+    sidebarBtn.addEventListener('click', (e) => {
+      sidebarBtn.classList.toggle('show')
+      sidebar.classList.toggle('show')
+    })
+  }
 }
 
 const loadProgress = () => {
   let count = document.getElementById('count')
   let counter = 0
-  setInterval(() => {
-    if (counter === 20) {
-      clearInterval()
-    } else {
-      counter += 1
-      count.innerHTML = counter + '%'
-    }
-  }, 30)
+  if(count) {
+    setInterval(() => {
+      if (counter === 20) {
+        clearInterval()
+      } else {
+        counter += 1
+        count.innerHTML = counter + '%'
+      }
+    }, 30)
+  }
 }
 
 const collapseListItems = () => {
@@ -43,6 +56,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   loadProgress()
   collapseListItems()
   toggleSidebarOnMobile()
+  toggleSelectInput()
 });
 
 

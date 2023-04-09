@@ -141,7 +141,7 @@ html, body, .page-header__usage {
         margin-right: 16px;
         width: 1px; }
   .main-header__notifications > span {
-    background: no-repeat center url("../img/bell-icon.svg");
+    background: no-repeat center/contain url("../img/bell-icon.svg");
     content: '';
     cursor: pointer;
     display: inline-block;
@@ -178,11 +178,14 @@ html, body, .page-header__usage {
   @media only screen and (max-width: 767px) {
     .main-header__service {
       display: none !important; } }
-  .main-header__help:before {
-    background: no-repeat center url("../img/help-icon.svg");
+  .main-header__help > a:before {
+    background: no-repeat center/contain url("../img/help-icon.svg");
     content: '';
+    display: inline-block;
     height: 15px;
+    margin-bottom: 2px;
     margin-right: 9px;
+    vertical-align: middle;
     width: 14px; }
   .main-header__account {
     background-color: #00A9E0;
@@ -228,7 +231,7 @@ html, body, .page-header__usage {
       .page-header__platform {
         flex-basis: 72px; } }
     .page-header__platform:after {
-      background: no-repeat center url("../img/chevron-right-icon.svg");
+      background: no-repeat center/contain url("../img/chevron-right-icon.svg");
       content: '';
       height: 16px;
       margin: auto 0;
@@ -320,7 +323,7 @@ html, body, .page-header__usage {
     padding-right: 24px;
     position: relative; }
     .page-header__usage:after {
-      background: no-repeat center url("../img/chevron-down-icon.svg");
+      background: no-repeat center/contain url("../img/chevron-down-icon.svg");
       content: '';
       height: 6px;
       margin: auto 0;
@@ -393,6 +396,27 @@ html, body, .page-header__usage {
   overflow: auto;
   padding: 24px;
   width: 100%; }
+  .page__title {
+    color: #272727;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 24px; }
+    .page__title:before {
+      background: no-repeat center/contain url("../img/email-senders-icon.svg");
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin-right: 12px;
+      vertical-align: middle;
+      width: 24px; }
+    @media only screen and (max-width: 1023px) {
+      .page__title {
+        margin-bottom: 16px; } }
+    @media only screen and (max-width: 767px) {
+      .page__title {
+        margin-bottom: 12px; } }
 
 .sidebar {
   background-color: #FFFFFF;
@@ -464,22 +488,29 @@ html, body, .page-header__usage {
       text-align: center;
       top: 3px;
       width: 16px; }
-    .sidebar__list_item.active > a, .sidebar__list_item:hover > a {
+    .sidebar__list_item.active > a {
       background-color: #F3F3FA; }
-      .sidebar__list_item.active > a:before, .sidebar__list_item:hover > a:before {
+      .sidebar__list_item.active > a:before {
         background-color: #00A9E0; }
-      .sidebar__list_item.active > a > svg > path, .sidebar__list_item:hover > a > svg > path {
+      .sidebar__list_item.active > a > svg > path {
         fill: #2C79E7; }
-    .sidebar__list_item:hover:not(.active) > a > span {
-      -webkit-transform: translateX(3px);
-      transform: translateX(3px); }
-    .sidebar__list_item:hover:not(.active) > a.collapsed > span {
-      -webkit-transform: translateX(0);
-      transform: translateX(0); }
+    @media only screen and (min-width: 768px) {
+      .sidebar__list_item:hover > a {
+        background-color: #F3F3FA; }
+        .sidebar__list_item:hover > a:before {
+          background-color: #00A9E0; }
+        .sidebar__list_item:hover > a > svg > path {
+          fill: #2C79E7; }
+      .sidebar__list_item:hover:not(.active) > a > span {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px); }
+      .sidebar__list_item:hover:not(.active) > a.collapsed > span {
+        -webkit-transform: translateX(0);
+        transform: translateX(0); } }
     .sidebar__list_item.active > a > span {
       font-weight: 600; }
     .sidebar__list_item > a.collapse:after {
-      background: no-repeat center url("../img/arrow-down-small.svg");
+      background: no-repeat center/contain url("../img/arrow-down-small.svg");
       bottom: 0;
       content: '';
       display: inline-block;
@@ -547,10 +578,11 @@ html, body, .page-header__usage {
     .sidebar__collapse ul > li {
       display: block;
       padding-left: 26px;
-      margin-bottom: 3px; }
-      .sidebar__collapse ul > li:hover > a {
-        -webkit-transform: translateX(2px);
-        transform: translateX(2px); }
+      margin-bottom: 4px; }
+      @media only screen and (min-width: 768px) {
+        .sidebar__collapse ul > li:hover > a {
+          -webkit-transform: translateX(2px);
+          transform: translateX(2px); } }
       .sidebar__collapse ul > li > a {
         color: #999999;
         display: block;

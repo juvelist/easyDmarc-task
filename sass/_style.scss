@@ -2,7 +2,6 @@ html, body {
   @extend %fontMain-md;
 }
 
-
 // main-header
 .main-header {
   align-items: center;
@@ -11,6 +10,11 @@ html, body {
   justify-content: space-between;
   height: $headerHeightMain;
   padding: 0 32px 0 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   &__logo {
     display: inline-block;
     & > img {
@@ -80,7 +84,7 @@ html, body {
       padding-left: 8px;
       padding-right: 8px;
     }
-    @media (max-width: #{$breakpoint-sm}px) {
+    @media only screen and (max-width: #{$breakpoint-sm}px) {
       display: none !important;
     }
   }
@@ -107,17 +111,33 @@ html, body {
 
 
 // main
-main {
-  min-height: calc(100vh - #{$headerHeightMain});
-  display: flex;
-  flex-direction: column;
-}
+//main {
+//  min-height: calc(100vh - #{$headerHeightMain});
+//  display: flex;
+//  flex-direction: column;
+//}
 
 // page-header
 .page-header {
   background-color: $backgroundMain;
   display: flex;
   height: $headerHeightPage;
+  position: fixed;
+  top: $headerHeightMain;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  &:after {
+    background-color: $borderColorHeader;
+    content: '';
+    display: block;
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 100%;
+  }
   &__platform {
     align-items: center;
     cursor: pointer;
@@ -129,7 +149,7 @@ main {
     padding-left: 12px;
     padding-right: 28px;
     position: relative;
-    @media (max-width: #{$breakpoint-sm}px) {
+    @media only screen and (max-width: #{$breakpoint-sm}px) {
       flex-basis: 72px;
     }
     &:after {
@@ -141,10 +161,10 @@ main {
       right: 12px;
       top: 50%;
       transform: translate(0, -50%);
-      transition: transform 0.3s ease;
       width: 16px;
+      @include transition(transform);
     }
-    @media (min-width: #{$breakpoint-sm + 1}px) {
+    @media only screen and (min-width: #{$breakpoint-sm + 1}px) {
       &:hover:after {
         transform: translate(-3px, -50%);
       }
@@ -152,7 +172,7 @@ main {
     & > p {
       color: $colorPrimeDark;
       @extend %fontMain-sm;
-      @media (max-width: #{$breakpoint-sm}px) {
+      @media only screen and (max-width: #{$breakpoint-sm}px) {
         display: none;
       }
     }
@@ -168,9 +188,10 @@ main {
   }
   &__sidebar-btn {
     border-right: 1px solid $borderColorHeader;
+    cursor: pointer;
     position: relative;
     width: 48px;
-    @media (min-width: #{$breakpoint-sm + 1}px) {
+    @media only screen and (min-width: #{$breakpoint-sm + 1}px) {
       display: none;
     }
     & > span {
@@ -188,10 +209,10 @@ main {
         height: 1px;
         border-radius: 1px;
         margin: 5px 0;
-        transition: transform 0.3s ease;
+        @include transition(transform);
       }
     }
-    &:hover > span {
+    &.show > span {
       &:before {
         transform: translateY(6px) rotate(135deg);
       }
@@ -208,7 +229,7 @@ main {
     display: inline-block;
     margin-right: 16px;
     @extend %fontMain-sm;
-    @media (max-width: #{$breakpoint-sm}px) {
+    @media only screen and (max-width: #{$breakpoint-sm}px) {
       display: none;
     }
   }
@@ -222,7 +243,7 @@ main {
     padding-left: 16px;
     padding-right: 16px;
     @extend %fontMain-sm;
-    @media (max-width: #{$breakpoint-sm}px) {
+    @media only screen and (max-width: #{$breakpoint-sm}px) {
       background-color: #FBB03B;
     }
   }
@@ -231,7 +252,6 @@ main {
     color: $colorPrimeDark;
     cursor: pointer;
     display: flex;
-    margin-right: 16px;
     padding-right: 24px;
     position: relative;
     @extend %fontMain-md;
@@ -244,24 +264,24 @@ main {
       right: 0;
       top: 50%;
       transform: translate(0, -50%);
-      transition: transform 0.3s ease;
       width: 8px;
+      @include transition(transform);
     }
     & > span {
       margin-left: 8px;
-      @media (max-width: #{$breakpoint-sm}px) {
+      @media only screen and (max-width: #{$breakpoint-sm}px) {
         display: none;
       }
     }
-    @media (min-width: #{$breakpoint-sm + 1}px) {
+    @media only screen and (min-width: #{$breakpoint-sm + 1}px) {
       &:hover:after {
-        transform: translate(0, -25%);
+        transform: translate(0, -20%);
       }
     }
   }
 }
 
-// usage
+// usage - animated progress
 .usage {
   height: 40px;
   position: relative;
@@ -292,33 +312,41 @@ main {
     stroke-width: 5px;
     stroke-dasharray: 110;
     stroke-dashoffset: 110;
-    animation: anim .8s linear forwards;
+    animation: load-progress .8s linear forwards;
   }
   svg {
     position: absolute;
     top: 0;
     left: 0;
   }
-  @keyframes anim {
+  @keyframes load-progress {
     to {
       stroke-dashoffset: 93;
     }
   }
 }
 
-
-.page {
+// page
+.page-wrapper {
   background-color: $backgroundPage;
   display: flex;
-  flex: 1;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: $headerHeightPage + $headerHeightMain;
 }
 
-.page-content {
-  border-top: 1px solid $borderColorHeader;
-  height: auto;
-  min-height: 100%;
+.page {
+  height: 100%;
+  margin-bottom: 60px;
+  overflow: auto;
+  padding: 24px;
   width: 100%;
+  @extend %disableScrollbar;
 }
+
+
+
+
 
 
 
@@ -331,11 +359,179 @@ main {
   flex-basis: 240px;
   height: auto;
   min-height: 100%;
-  @media (max-width: #{$breakpoint-md}px) {
+  overflow: auto;
+  padding: 12px 6px;
+  position: relative;
+  z-index: 1;
+  @extend %disableScrollbar;
+  @media only screen and (min-width: #{$breakpoint-sm + 1}px) and (max-width: #{$breakpoint-md}px) {
     flex-basis: 52px;
   }
-  @media (max-width: #{$breakpoint-sm}px) {
-    flex-basis: 0;
+  @media only screen and (max-width: #{$breakpoint-sm}px) {
+    height: calc(100vh - 350px);
+    left: 0;
+    padding-bottom: 160px;
+    position: fixed;
+    top: $headerHeightPage + $headerHeightMain + 1px;
+
+    transform: translateX(-$sidebarWidth);
+    @include transition(transform);
+    &.show {
+      transform: translateX(0);
+    }
+  }
+  &__list {
+    &_subtitle {
+      color: #999999;
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 20px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      padding-left: 6px;
+      padding-right: 6px;
+      @media only screen and (min-width: #{$breakpoint-sm + 1}px) and (max-width: #{$breakpoint-md}px) {
+        margin-top: 12px;
+        & > span {
+          display: none;
+        }
+        &:before {
+          background-color: $borderColorHeader;
+          content: '';
+          display: block;
+          width: 100%;
+          height: 1px;
+        }
+      }
+    }
+    &_item {
+      margin-bottom: 4px;
+      position: relative;
+      @include transition(background-color);
+      &.alert:after {
+        background-color: #E63200;
+        border: 2px solid $colorTextWhite;
+        border-radius: 50%;
+        color: $colorTextWhite;
+        content: attr(data-count);
+        font: 400 10px 'Roboto', sans-serif;
+        line-height: 12px;
+        height: 16px;
+        position: absolute;
+        left: 20px;
+        text-align: center;
+        top: 3px;
+        width: 16px;
+      }
+      &.active,
+      &:hover {
+        & > a {
+          background-color: #F3F3FA;
+          &:before {
+            background-color: $colorPrimeLight;
+          }
+          & > svg > path {
+            fill: #2C79E7;
+          }
+        }
+      }
+      &:hover:not(.active) {
+        & > a {
+          & > span {
+            transform: translateX(3px);
+          }
+          &.collapsed > span {
+            transform: translateX(0);
+          }
+        }
+      }
+      &.active {
+        & > a > span {
+          font-weight: 600;
+        }
+      }
+      & > a.collapse {
+        &:after {
+          background: no-repeat center url('../img/arrow-down-small.svg');
+          bottom: 0;
+          content: '';
+          display: inline-block;
+          height: 16px;
+          margin: auto 0;
+          position: absolute;
+          right: 8px;
+          top: 0;
+          width: 16px;
+          @include transition(transform);
+          @media only screen and (min-width: #{$breakpoint-sm + 1}px) and (max-width: #{$breakpoint-md}px) {
+            display: none;
+          }
+        }
+        &.collapsed {
+          &:after {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+    &_link {
+      align-items: center;
+      color: $colorTextLight;
+      background-color: transparent;
+      border-radius: 7px;
+      display: flex;
+      height: 40px;
+      flex: 1;
+      padding-left: 8px;
+      padding-right: 8px;
+      position: relative;
+      @extend %fontMain-sm;
+      @include transition(background-color, .2s);
+      &:before {
+        background-color: transparent;
+        content: '';
+        height: 16px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        @include transition(background-color, .2s);
+      }
+      & > span {
+        margin-left: 12px;
+        @include transition(transform);
+        @media only screen and (min-width: #{$breakpoint-sm + 1}px) and (max-width: #{$breakpoint-md}px) {
+          display: none;
+        }
+      }
+      & > svg > path {
+        @include transition(fill);
+      }
+    }
+  }
+  &__collapse {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    @include transition(max-height, .3s, ease-out);
+    ul > li {
+      display: block;
+      padding-left: 26px;
+      margin-bottom: 3px;
+      &:hover > a {
+        transform: translateX(2px);
+      }
+      & > a {
+        color: #999999;
+        display: block;
+        font-family: 'Roboto', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        @include transition(transform);
+      }
+    }
   }
 }
 

@@ -1,0 +1,27 @@
+%fontMain-sm {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  @media only screen and (max-width: $breakpoint-sm) {
+    font-size: 12px;
+  }
+}
+
+%fontMain-md {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  @media only screen and (max-width: $breakpoint-sm) {
+    font-size: 13px;
+  }
+}
+
+%disableScrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

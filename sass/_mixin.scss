@@ -1,21 +1,7 @@
-%fontMain-sm {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.5;
-  @media (max-width: $breakpoint-sm) {
-    font-size: 12px;
-  }
-}
-
-%fontMain-md {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  @media (max-width: $breakpoint-sm) {
-    font-size: 13px;
-  }
+@mixin transition($property, $duration: .3s, $type: ease) {
+  transition-property: #{$property};
+  transition-duration: $duration;
+  transition-timing-function: $type;
 }
 
 

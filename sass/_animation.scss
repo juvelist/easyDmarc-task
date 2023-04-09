@@ -1,24 +1,43 @@
-//@keyframes fade-in-down {
-//  from {
-//    transform: translate3d(0, -20px, 0);
-//    opacity: 0;
-//    visibility: hidden;
-//  }
-//  to {
-//    transform: translateZ(0);
-//    opacity: 1;
-//    visibility: visible;
-//  }
-//}
-
 @keyframes fade-in-up {
   from {
+    -webkit-transform: translate3d(0, 20px, 0);
     transform: translate3d(0, 20px, 0);
     opacity: 0;
     visibility: hidden;
   }
   to {
+    -webkit-transform: translateZ(0);
     transform: translateZ(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fade-in-left {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    -webkit-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    -webkit-transform: rotate(3deg);
+    transform: rotate(3deg);
     opacity: 1;
     visibility: visible;
   }

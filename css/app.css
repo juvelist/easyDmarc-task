@@ -119,16 +119,6 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc 
     .page__title, .select {
       margin-bottom: 12px; } }
 
-@keyframes fade-in-down {
-  from {
-    transform: translate3d(0, -20px, 0);
-    opacity: 0;
-    visibility: hidden; }
-  to {
-    transform: translateZ(0);
-    opacity: 1;
-    visibility: visible; } }
-
 @keyframes fade-in-up {
   from {
     transform: translate3d(0, 20px, 0);
@@ -546,7 +536,8 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc 
         font-size: 22px; } }
   .expired__desc {
     color: #333333;
-    margin-bottom: 24px; }
+    margin: 0 auto 24px;
+    max-width: 600px; }
   @media only screen and (max-width: 1200px) {
     .expired {
       border-radius: 20px; } }
@@ -554,15 +545,16 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc 
     .expired {
       padding: 24px 24px 40px; } }
   .expired__spf {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 32px; }
     .expired__spf_title {
       margin-bottom: 12px; }
     .expired__spf_img {
-      display: block;
       margin-bottom: 24px;
-      object-fit: contain;
-      width: 100%; }
+      object-fit: contain; }
     .expired__spf_link {
+      align-self: center;
       color: #00A9E0; }
   .expired__lookups {
     display: flex;
@@ -661,6 +653,106 @@ html, body, .page-header__usage, .select__collapse_text, .expired__lookups_desc 
   flex: 0 0 57%;
   padding: 48px 40px;
   text-align: center; }
+  .upgrade__title {
+    color: #484964;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 auto 24px;
+    max-width: 400px; }
+    @media only screen and (max-width: 767px) {
+      .upgrade__title {
+        font-size: 22px; } }
+    .upgrade__title > span {
+      color: #00A9E0; }
+  .upgrade__link {
+    color: #00A9E0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5; }
+
+.switcher {
+  background-color: #F3F3FA;
+  border-radius: 10px;
+  display: flex;
+  height: 40px;
+  margin: 0 auto 40px;
+  position: relative;
+  text-align: center;
+  width: 252px; }
+  .switcher:after {
+    background-color: #0DB4A7;
+    border-radius: 2px;
+    color: #FFFFFF;
+    content: attr(data-save);
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
+    position: absolute;
+    right: 20px;
+    top: -11px; }
+  .switcher > input {
+    bottom: 0;
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2; }
+    .switcher > input ~ span:not(:last-child) {
+      color: #00A9E0; }
+    .switcher > input ~ span:last-child {
+      color: #566170; }
+    .switcher > input:checked + label:before {
+      -webkit-transform: translateX(120px);
+      transform: translateX(120px);
+      transition-property: transform;
+      transition-duration: 0.3s;
+      transition-timing-function: ease; }
+    .switcher > input:checked ~ span:not(:last-child) {
+      color: #566170; }
+    .switcher > input:checked ~ span:last-child {
+      color: #00A9E0; }
+    .switcher > input + label {
+      display: block;
+      height: 100%;
+      pointer-events: none;
+      position: absolute;
+      user-select: none;
+      width: 100%; }
+      .switcher > input + label:before {
+        content: "";
+        background: #FFFFFF;
+        border-radius: 6px;
+        height: 32px;
+        left: 4px;
+        position: absolute;
+        top: 4px;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        width: 124px;
+        transition-property: transform;
+        transition-duration: 0.3s;
+        transition-timing-function: ease; }
+      .switcher > input + label ~ span {
+        flex: 0 0 50%;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 42px;
+        position: relative;
+        transition-property: color;
+        transition-duration: 0.3s;
+        transition-timing-function: ease; }
 
 .sidebar {
   background-color: #FFFFFF;
